@@ -1,0 +1,499 @@
+
+\documentclass[12pt, a4paper, openany, twoside]{book}
+\usepackage[left=1in,right=1in,bottom=0.5in,top=0.8in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{epstopdf}
+\usepackage[pdfpagelabels,hyperindex]{hyperref}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz-cd}
+\usepackage{comment}
+\usepackage{mathpartir}
+
+\linespread{1.3} 
+
+\hypersetup{
+pdftitle={.},
+pdfauthor={Hojune Lee},
+}
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{ppty}[thm]{Property}
+\newtheorem{ppties}[thm]{Properties}
+\newtheorem{axiom}[thm]{Axiom}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{prob}[thm]{Problem}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{limit}[thm]{Limitation}
+
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\newenvironment{thmbox}[1][]{\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title={#1}]}{\end{tcolorbox}}
+
+
+% newcommand bb
+    \newcommand{\BA}{{\mathbb {A}}} \newcommand{\BB}{{\mathbb {B}}}
+    \newcommand{\BC}{{\mathbb {C}}} \newcommand{\BD}{{\mathbb {D}}}
+    \newcommand{\BE}{{\mathbb {E}}} \newcommand{\BF}{{\mathbb {F}}}
+    \newcommand{\BG}{{\mathbb {G}}} \newcommand{\BH}{{\mathbb {H}}}
+    \newcommand{\BI}{{\mathbb {I}}} \newcommand{\BJ}{{\mathbb {J}}}
+    \newcommand{\BK}{{\mathbb {U}}} \newcommand{\BL}{{\mathbb {L}}}
+    \newcommand{\BM}{{\mathbb {M}}} \newcommand{\BN}{{\mathbb {N}}}
+    \newcommand{\BO}{{\mathbb {O}}} \newcommand{\BP}{{\mathbb {P}}}
+    \newcommand{\BQ}{{\mathbb {Q}}} \newcommand{\BR}{{\mathbb {R}}}
+    \newcommand{\BS}{{\mathbb {S}}} \newcommand{\BT}{{\mathbb {T}}}
+    \newcommand{\BU}{{\mathbb {U}}} \newcommand{\BV}{{\mathbb {V}}}
+    \newcommand{\BW}{{\mathbb {W}}} \newcommand{\BX}{{\mathbb {X}}}
+    \newcommand{\BY}{{\mathbb {Y}}} \newcommand{\BZ}{{\mathbb {Z}}}
+
+% newcommand  scr
+    \newcommand{\sA}{{\mathscr {A}}} \newcommand{\sB}{{\mathscr {B}}}
+    \newcommand{\sC}{{\mathscr {C}}} \newcommand{\sD}{{\mathscr {D}}}
+    \newcommand{\sE}{{\mathscr {E}}} \newcommand{\sF}{{\mathscr {F}}}
+    \newcommand{\sG}{{\mathscr {G}}} \newcommand{\sH}{{\mathscr {H}}}
+    \newcommand{\sI}{{\mathscr {I}}} \newcommand{\sJ}{{\mathscr {J}}}
+    \newcommand{\sK}{{\mathscr {K}}} \newcommand{\sL}{{\mathscr {L}}}
+    \newcommand{\sN}{{\mathscr {N}}} \newcommand{\sM}{{\mathscr {M}}}
+    \newcommand{\sO}{{\mathscr {O}}} \newcommand{\sP}{{\mathscr {P}}}
+    \newcommand{\sQ}{{\mathscr {Q}}} \newcommand{\sR}{{\mathscr {R}}}
+    \newcommand{\sS}{{\mathscr {S}}} \newcommand{\sT}{{\mathscr {T}}}
+    \newcommand{\sU}{{\mathscr {U}}} \newcommand{\sV}{{\mathscr {V}}}
+    \newcommand{\sW}{{\mathscr {W}}} \newcommand{\sX}{{\mathscr {X}}}
+    \newcommand{\sY}{{\mathscr {Y}}} \newcommand{\sZ}{{\mathscr {Z}}}
+
+
+% newcommand cal
+    \newcommand{\CA}{{\mathcal {A}}} \newcommand{\CB}{{\mathcal {B}}}
+    \newcommand{\CC}{{\mathcal {C}}} \newcommand{\CD}{{\mathcal {D}}}
+    \newcommand{\CE}{{\mathcal {E}}} \newcommand{\CF}{{\mathcal {F}}}
+    \newcommand{\CG}{{\mathcal {G}}} \newcommand{\CH}{{\mathcal {H}}}
+    \newcommand{\CI}{{\mathcal {I}}} \newcommand{\CJ}{{\mathcal {J}}}
+    \newcommand{\CK}{{\mathcal {K}}} \newcommand{\CL}{{\mathcal {L}}}
+    \newcommand{\CM}{{\mathcal {M}}} \newcommand{\CN}{{\mathcal {N}}}
+    \newcommand{\CO}{{\mathcal {O}}} \newcommand{\CP}{{\mathcal {P}}}
+    \newcommand{\CQ}{{\mathcal {Q}}} \newcommand{\CR}{{\mathcal {R}}}
+    \newcommand{\CS}{{\mathcal {S}}} \newcommand{\CT}{{\mathcal {T}}}
+    \newcommand{\CU}{{\mathcal {U}}} \newcommand{\CV}{{\mathcal {V}}}
+    \newcommand{\CW}{{\mathcal {W}}} \newcommand{\CX}{{\mathcal {X}}}
+    \newcommand{\CY}{{\mathcal {Y}}} \newcommand{\CZ}{{\mathcal {Z}}}
+
+    % newcommand frak
+     \newcommand{\fa}{{\mathfrak{a}}}  \newcommand{\fb}{{\mathfrak{b}}}
+     \newcommand{\fc}{{\mathfrak{c}}}  \newcommand{\fd}{{\mathfrak{d}}}
+     \newcommand{\fe}{{\mathfrak{e}}}  \newcommand{\ff}{{\mathfrak{f}}}
+     \newcommand{\fg}{{\mathfrak{g}}}  \newcommand{\fh}{{\mathfrak{h}}}
+     \newcommand{\fii}{{\mathfrak{i}}}  \newcommand{\fj}{{\mathfrak{j}}}
+     \newcommand{\fk}{{\mathfrak{m}}}  \newcommand{\fl}{{\mathfrak{l}}}
+     \newcommand{\fm}{{\mathfrak{m}}}  \newcommand{\fn}{{\mathfrak{n}}}
+     \newcommand{\fo}{{\mathfrak{o}}}  \newcommand{\fp}{{\mathfrak{p}}}
+     \newcommand{\fq}{{\mathfrak{q}}}  \newcommand{\fr}{{\mathfrak{r}}}
+     \newcommand{\fs}{{\mathfrak{s}}}  \newcommand{\ft}{{\mathfrak{t}}}
+     \newcommand{\fu}{{\mathfrak{u}}}  \newcommand{\fv}{{\mathfrak{v}}}
+     \newcommand{\fw}{{\mathfrak{w}}}  \newcommand{\fx}{{\mathfrak{x}}}
+     \newcommand{\fy}{{\mathfrak{y}}}  \newcommand{\fz}{{\mathfrak{z}}}
+
+    \newcommand{\fA}{{\mathfrak{A}}}  \newcommand{\fB}{{\mathfrak{B}}}
+     \newcommand{\fC}{{\mathfrak{C}}}  \newcommand{\fD}{{\mathfrak{D}}}
+     \newcommand{\fE}{{\mathfrak{E}}}  \newcommand{\fF}{{\mathfrak{F}}}
+     \newcommand{\fG}{{\mathfrak{G}}}  \newcommand{\fH}{{\mathfrak{H}}}
+     \newcommand{\fI}{{\mathfrak{I}}}  \newcommand{\fJ}{{\mathfrak{J}}}
+     \newcommand{\fK}{{\mathfrak{K}}}  \newcommand{\fL}{{\mathfrak{L}}}
+     \newcommand{\fM}{{\mathfrak{M}}}  \newcommand{\fN}{{\mathfrak{N}}}
+     \newcommand{\fO}{{\mathfrak{O}}}  \newcommand{\fP}{{\mathfrak{P}}}
+     \newcommand{\fQ}{{\mathfrak{Q}}}  \newcommand{\fR}{{\mathfrak{R}}}
+     \newcommand{\fS}{{\mathfrak{S}}}  \newcommand{\fT}{{\mathfrak{T}}}
+     \newcommand{\fU}{{\mathfrak{U}}}  \newcommand{\fV}{{\mathfrak{V}}}
+     \newcommand{\fW}{{\mathfrak{W}}}  \newcommand{\fX}{{\mathfrak{X}}}
+     \newcommand{\fY}{{\mathfrak{Y}}}  \newcommand{\fZ}{{\mathfrak{Z}}}
+
+
+
+ % newcommand :rm
+     \newcommand{\RA}{{\mathrm {A}}} \newcommand{\RB}{{\mathrm {B}}}
+    \newcommand{\RC}{{\mathrm {C}}} \newcommand{\RD}{{\mathrm {D}}}
+    \newcommand{\RE}{{\mathrm {E}}} \newcommand{\RF}{{\mathrm {F}}}
+    \newcommand{\RG}{{\mathrm {G}}} \newcommand{\RH}{{\mathrm {H}}}
+    \newcommand{\RI}{{\mathrm {I}}} \newcommand{\RJ}{{\mathrm {J}}}
+    \newcommand{\RK}{{\mathrm {K}}} \newcommand{\RL}{{\mathrm {L}}}
+    \newcommand{\RM}{{\mathrm {M}}} \newcommand{\RN}{{\mathrm {N}}}
+    \newcommand{\RO}{{\mathrm {O}}} \newcommand{\RP}{{\mathrm {P}}}
+    \newcommand{\RQ}{{\mathrm {Q}}} \newcommand{\RR}{{\mathrm {R}}}
+    \newcommand{\RS}{{\mathrm {S}}} \newcommand{\RT}{{\mathrm {T}}}
+    \newcommand{\RU}{{\mathrm {U}}} \newcommand{\RV}{{\mathrm {V}}}
+    \newcommand{\RW}{{\mathrm {W}}} \newcommand{\RX}{{\mathrm {X}}}
+    \newcommand{\RY}{{\mathrm {Y}}} \newcommand{\RZ}{{\mathrm {Z}}}
+
+    \newcommand{\Ad}{{\mathrm{Ad}}} \newcommand{\Aut}{{\mathrm{Aut}}}
+    \newcommand{\Br}{{\mathrm{Br}}} \newcommand{\Ch}{{\mathrm{Ch}}}
+    \newcommand{\cod}{{\mathrm{cod}}} \newcommand{\cont}{{\mathrm{cont}}}
+    \newcommand{\cl}{{\mathrm{cl}}}   \newcommand{\Cl}{{\mathrm{Cl}}}
+    \newcommand{\disc}{{\mathrm{disc}}}\newcommand{\Eis}{{\mathrm{Eis}}}
+    \newcommand{\Div}{{\mathrm{Div}}} \renewcommand{\div}{{\mathrm{div}}}
+    \newcommand{\End}{{\mathrm{End}}} \newcommand{\Frob}{{\mathrm{Frob}}}
+    \newcommand{\Gal}{{\mathrm{Gal}}} \newcommand{\GL}{{\mathrm{GL}}}
+    \newcommand{\Hom}{{\mathrm{Hom}}} \renewcommand{\Im}{{\mathrm{Im}}}
+    \newcommand{\Ind}{{\mathrm{Ind}}} \newcommand{\ind}{{\mathrm{ind}}}
+    \newcommand{\inv}{{\mathrm{inv}}}
+    \newcommand{\Isom}{{\mathrm{Isom}}} \newcommand{\Jac}{{\mathrm{Jac}}}
+    \newcommand{\ad}{{\mathrm{ad}}}  \newcommand{\Tr}{{\mathrm{Tr}}}
+    \newcommand{\Ker}{{\mathrm{Ker}}} \newcommand{\Ros}{{\mathrm{Ros}}}
+    \newcommand{\Lie}{{\mathrm{Lie}}} \newcommand{\Hol}{{\mathrm{Hol}}}
+
+    \newcommand{\cyc}{{\mathrm{cyc}}}\newcommand{\id}{{\mathrm{id}}}
+    \newcommand{\new}{{\mathrm{new}}} \newcommand{\NS}{{\mathrm{NS}}}
+    \newcommand{\ord}{{\mathrm{ord}}} \newcommand{\rank}{{\mathrm{rank}}}
+    \newcommand{\PGL}{{\mathrm{PGL}}} \newcommand{\Pic}{\mathrm{Pic}}
+    \newcommand{\cond}{\mathrm{cond}} \newcommand{\Is}{{\mathrm{Is}}}
+    \renewcommand{\Re}{{\mathrm{Re}}} \newcommand{\reg}{{\mathrm{reg}}}
+    \newcommand{\Res}{{\mathrm{Res}}} \newcommand{\Sel}{{\mathrm{Sel}}}
+    \newcommand{\RTr}{{\mathrm{Tr}}} \newcommand{\alg}{{\mathrm{alg}}}
+    \newcommand{\PSL}{{\mathrm{PSL}}}
+
+\newcommand{\coker}{{\mathrm{coker}}}
+\newcommand{\val}{{\mathrm{val}}} \newcommand{\sign}{{\mathrm{sign}}}
+\newcommand{\mult}{{\mathrm{mult}}} \newcommand{\Vol}{{\mathrm{Vol}}}
+\newcommand{\Meas}{{\mathrm{Meas}}}\renewcommand{\mod}{\ \mathrm{mod}\ }
+\newcommand{\Ann}{\mathrm{Ann}}
+\newcommand{\Tor}{\mathrm{Tor}}
+\newcommand{\Supp}{\mathrm{Supp}}\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Coker}{\mathrm{Coker}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\Irr}{\mathrm{Irr}}\newcommand{\Inf}{\mathrm{Inf}}\newcommand{\Sup}{\mathrm{Sup}}
+\newcommand{\rk}{\mathrm{rk}}\newcommand{\Fil}{\mathrm{Fil}}
+\newcommand{\Sim}{{\mathrm{Sim}}} \newcommand{\SL}{{\mathrm{SL}}}
+\newcommand{\Spec}{{\mathrm{Spec}}} \newcommand{\SO}{{\mathrm{SO}}}
+\newcommand{\SU}{{\mathrm{SU}}} \newcommand{\Sym}{{\mathrm{Sym}}}
+\newcommand{\sgn}{{\mathrm{sgn}}} \newcommand{\tr}{{\mathrm{tr}}}
+\newcommand{\tor}{{\mathrm{tor}}}  \newcommand{\ur}{{\mathrm{ur}}}
+\newcommand{\vol}{{\mathrm{vol}}}  \newcommand{\ab}{{\mathrm{ab}}}
+\newcommand{\Sh}{{\mathrm{Sh}}} \newcommand{\Ell}{{\mathrm{Ell}}}
+\newcommand{\Char}{{\mathrm{Char}}}\newcommand{\Tate}{{\mathrm{Tate}}}
+\newcommand{\corank}{{\mathrm{corank}}} \newcommand{\Cond}{{\mathrm{Cond}}}
+\newcommand{\Inn}{{\mathrm{Inn}}} \newcommand{\Spf}{{\mathrm{Spf}}}
+\newcommand{\Mat}{{\mathrm{Mat}}}
+
+
+    \font\cyr=wncyr10  \newcommand{\Sha}{\hbox{\cyr X}}
+    \newcommand{\wt}{\widetilde} \newcommand{\wh}{\widehat} \newcommand{\ck}{\check}
+    \newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
+    \newcommand{\pair}[1]{\langle {#1} \rangle}
+    \newcommand{\wpair}[1]{\left\{{#1}\right\}}
+    \newcommand{\intn}[1]{\left( {#1} \right)}
+    \newcommand{\norm}[1]{\|{#1}\|}
+    \newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+    \newcommand{\ds}{\displaystyle}
+    \newcommand{\ov}{\overline}
+    \newcommand{\Gros}{Gr\"{o}ssencharaktere}
+    \newcommand{\incl}{\hookrightarrow}
+    \newcommand{\lra}{\longrightarrow}
+     \newcommand{\ra}{\rightarrow}
+    \newcommand{\imp}{\Longrightarrow}
+    \newcommand{\lto}{\longmapsto}
+    \newcommand{\bs}{\backslash}
+    \newcommand{\nequiv}{\equiv\hspace{-7.8pt}/}
+    \theoremstyle{plain}
+
+
+\definecolor{energy}{RGB}{114,0,172}
+\definecolor{freq}{RGB}{45,177,93}
+\definecolor{spin}{RGB}{251,0,29}
+\definecolor{signal}{RGB}{203,23,206}
+\definecolor{circle}{RGB}{217,86,16}
+\definecolor{average}{RGB}{203,23,206}
+\newcommand{\K}{\operatornamewithlimits{K}}
+\colorlet{shadecolor}{gray!20}
+\pgfplotsset{compat=1.9}
+\def\N{10}
+\def\M{4}
+\usepgflibrary{fpu}
+
+\algnewcommand\algorithmicinput{\textbf{Input:}}
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+
+
+\makeatletter
+\let\c@equation\c@thm
+\raggedbottom
+\makeatother
+\numberwithin{equation}{section}
+%--------Meta Data: Fill in your info------
+\author{Hojune Lee, 20210541}
+
+\title{Cryptography}
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{9cm}
+            
+        \Huge
+        \textbf{Cryptography}
+    
+        \vspace{1cm}
+        \large
+        Summary note, Lectured by Zhandry
+        \vspace{3cm}
+        
+        \LARGE
+        \textbf{Hojune Lee}
+            
+        \vspace{8cm}
+            
+        \normalsize
+        \textbf{School of Computing, KAIST}\\  
+    \end{center}
+\end{titlepage}
+
+\hypersetup{linkcolor=black}
+\tableofcontents
+\hypersetup{linkcolor=blue}
+
+\newpage 
+
+\chapter{Introduction to Cryptography}
+
+\section{Encryption}
+
+There will be many notational things and remarks and pre-requested things. 
+Since this is just \lq summary note of summary note(or more depth)', many of things will be assumed. 
+For here, I'm familiar with basic undergraduated mathematics and computation theory(e.g., Turing machine) 
+so I'll omit such details. Let's begin. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Encryption(Symmetric key or Secret Key)]
+
+(Symmetric key or Secret key) Encryption scheme is pair (\textsc{Enc}, \textsc{Dec}) of two (probabilistic) polynomial time algorithms such that 
+\[\textsc{Enc} : (\text{key, plain text}) \mapsto \text{cipher text}\]
+\[\textsc{Dec} : (\text{key, cipher text}) \mapsto \text{plain text}\]
+
+In symmetric key encryption scheme, assume that both side users have common key $k$. 
+Then what we want to guarantee is written by: 
+\[\Pr\left[\textsc{Dec}(k, \textsc{Enc}(k, m)) = m, \underbrace{k \xleftarrow{\mathdollar} \{0,1\}^\lambda}_{\text{environment}} \right] = 1\] 
+
+Means that, under the setting that $k$ is purely random among $\{0,1\}^\lambda$ where $\lambda$ is key length, 
+above event happens almost always. 
+
+\end{tcolorbox}
+
+In Cryptography, we interested about security of such schemes. Since the word \lq security' is quite abstracted, 
+there are bunch of things to define. First, we must define our problem (or settings). 
+In security problem, we always assume there exists unknown adversary $A$. Then the settings here can be: 
+\begin{itemize}
+    \item Could $A$ obtain the full cipher text?
+    \item What's the goal of $A$? Obtain full plain text, or some function if the plain text?
+    \item Could $A$ know the \textsc{Enc, Dec} and exploit them? 
+    \item ...
+\end{itemize}
+
+Our goal is analyze under these various assumptions. Let's see the first example. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!white,title=Indistinguishability Chosen Plaintext Attck]
+$\textsc{IND-CPA-EXP}_b(A, \lambda)$
+
+Let $A$ be an adversary, $C$ be a challenger. $b$ is parameter bit, here we assume that $A$ never access to $b$. 
+\begin{enumerate}
+    \item $C$ chooses purely(uniformly) random key $k \xleftarrow{\mathdollar} \{0,1\}^\lambda$
+    \item $A$ can choose any 2 plain text message $m_0, m_1$ then send both of them to $C$. 
+    \item $C$ select $m_b$ and then construct $c \gets \textsc{Enc}(k, m_b)$ then send it to $A$. 
+    \item $A$ can repeat above step arbitrary. Each time of repitition, we count $A$ one unit of time. 
+    \item Finally, $A$ guess $b'$ for $b$. 
+\end{enumerate}
+
+\end{tcolorbox}
+
+Intuitively, $b$ is sort of information that $C$ hiding. If $A$ can guess correctly with high probability, the encryption scheme reveal 
+few information about $C$'s secret to $A$. So, the ideal security under this setting can be defined by following.
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Indistinguishable under Chosen Plaintext Attack]
+
+An encryption scheme $(\textsc{Enc}, \textsc{Dec})$ is \textsc{IND-CPA} secure(indistinguishable under a chosen plaintext attack) 
+when for all adversary $A$ who have polynomial resources limitation, 
+\[\bigg| \Pr\left[1 \gets \textsc{IND-CPA-EXP}_0(A, \lambda)\right] - \Pr\left[1 \gets \textsc{IND-CPA-EXP}_1(A, \lambda)\right]\bigg| < \varepsilon(\lambda)\]
+
+Means that, two probability that $A$ is wrong or correct is almost equal. 
+
+\end{tcolorbox}
+
+We often call such scheme by \textsc{CPA} secure. However, deterministic \textsc{Enc} can not be \textsc{CPA} secure. 
+$A$ can send $(m_0, m_0)$ and $(m_1, m_1)$. Then $A$ obtain $c_0, c_1$ which are deterministic w.r.t. $m_0, m_1$. Then $A$ can send $(m_0, m_1)$ then 
+can obtain correct $b$ with probability 1. 
+
+\newpage 
+
+\section{Pseudo Random Functions}
+
+Since we've seen that deterministic is not suitable for security. So we need any sort of notion of Random. 
+Here, we define what is computable random(pseudo random), and pure random. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Pseudo Random Function]
+
+Pseudo Random Function(\textsc{PRF}) is a deterministic polynomial time computable function such that 
+\[\textsc{PRF}: \{0,1\}^\lambda \times \{0,1\}^{n(\lambda)} \rightarrow \{0,1\}^{m(\lambda)}\]
+
+\end{tcolorbox}
+
+It can be understood by \textsc{PRF} maps $(\text{key}, \text{seed}) \mapsto \text{Random string}$. 
+To it work as valid and secure random function, we do similar thing to previous section. Let's define following game. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!white,title=Pseudo Random Function Expreiments]
+
+$\textsc{PRF-EXP}_b(A, \lambda)$
+
+Let $A$ be an \textsc{PPT} adversary, $C$ be a challenger. $b$ is parameter bit, here we assume that $A$ never access to $b$. 
+
+\begin{enumerate}
+    \item If $b = 0$, $C$ choose purely random key $k \xleftarrow{\mathdollar} \{0,1\}^\lambda$. If $b = 1$, $C$ initializes an empty list $L$.
+    \item $A$ choose any seed $x \in \{0,1\}^{n(\lambda)}$ then send it to $C$. Then, $C$ responds as follow: 
+    \begin{itemize}
+        \item If $b = 0$, $C$ return $y \gets \textsc{PRF}(k, x)$
+        \item If $b = 1$, if $(x, y) \in L$ then return $y$ else generate pure random $y$ and $L \gets L :: (x, y)$
+    \end{itemize}
+    \item $A$ can repeat this process arbitrary and one repition charge one time unit.
+    \item Finally, $A$ guess $b'$ for $b$. 
+\end{enumerate}
+
+\end{tcolorbox}
+
+In other words, the goal of $A$ is distinguish computed random and pure random in polynomial time. If 
+it is possible, then such \textsc{PRF} is not so good. So, we define secure \textsc{PRF} via above experiment. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=PRF secure]
+
+A \textsc{PRF} is called PRF secure if for any PPT adversary $A$, 
+\[\bigg| \Pr\left[1 \gets \textsc{PRF-EXP}_0(A, \lambda)\right] - \Pr\left[\textsc{PRF-EXP}_1(A, \lambda)\right] \bigg| < \varepsilon(\lambda)\]
+
+\end{tcolorbox}
+
+\newpage 
+
+\section{CPA-secure secret key encryption wirh PRF}
+
+Then we can construct encryption scheme with such PRF. Let's see the following construction. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!white,title=Encryption with PRF]
+
+Let's assume that \textsc{PRF} is given.
+\begin{itemize} 
+\item \textsc{Enc}$(k, m)$: Given key $k \in \{0,1\}^\lambda$, plain text $m \in \{0,1\}^{m(\lambda)}$. 
+Choose $r \in \{0,1\}^{n(\lambda)}$ randomly (pure or pseudo) then compute $c \gets \textsc{PRF}(k,r) \oplus m$
+Output of encryption is $(r, c)$. 
+\item \textsc{Dec}$(k, (r,c))$: Given key $k \in \{0,1\}^{\lambda}$, cipher text $c \in \{0,1\}^{m(\lambda)}$ and chosen seed $r \in \{0,1\}^{n(\lambda)}$.
+Compute $m' \gets \textsc{PRF}(k, r) \oplus c = \textsc{PRF}(k,r) \oplus (\textsc{PRF}(k, r) \oplus m) = m$ 
+\end{itemize}
+\end{tcolorbox}
+
+Then what we want to show is that above encryption is CPA-secure. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Encryption with PRF is CPA-secure]
+
+If given \textsc{PRF} is \textsc{PRF}-secure and $2^{n(\lambda)}$ is super-polynomial, 
+then above $(\textsc{Enc}, \textsc{Dec})$ is CPA-secure. 
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+Suppose not. Then since $(\textsc{Enc}, \textsc{Dec})$ is not CPA-secure, we can write 
+\[\bigg| \Pr\left[1 \gets \textsc{IND-CPA-EXP}_0(A, \lambda)\right] - \Pr\left[1 \gets \textsc{IND-CPA-EXP}_1(A, \lambda)\right] \bigg| \geq \varepsilon(\lambda)\]
+Our goal is breaking the \textsc{PRF}-security of given pseudo random function with this inequality. 
+For intuitive idea, our goal is construct following. 
+\begin{enumerate}
+    \item We'll define 2 more games, called $H_1, H_2$. Let $\textsc{IND-CPA-EXP}_0 = H_1$ and 
+    
+    $\textsc{IND-CPA-EXP}_1 = H_3$. 
+    \item Then, we already have 
+    \[\bigg| \Pr[1 \gets H_0] - \Pr[1 \gets H_3] \bigg| \geq \varepsilon(\lambda)\]
+    \item Then, we can obtain 
+    \[\bigg| \underbrace{\Pr[1 \gets H_0] - \Pr[1 \gets H_1]}_A + \underbrace{...}_B + \underbrace{\Pr[1 \gets H_2] - \Pr[1 \gets H_3]}_C \bigg| \geq \varepsilon(\lambda)\]
+    \item Then, $|A| + |B| + |C| \geq |A+B+C| \geq \varepsilon(\lambda)$, implies that 
+    \[\exists i \in \{0,1,2\}, \bigg| \Pr\left[1 \gets H_i\right] - \Pr\left[1 \gets H_{i+1}\right] \bigg| \geq \frac{1}{3}\varepsilon(\lambda) \]
+    \item Finally, all each cases contradicts to \textsc{PRF}-security. 
+\end{enumerate}
+
+Then what we need to do is that, define $H_1, H_2$ and show all cases $i \in \{0, 1, 2\}$ fails. 
+
+\begin{itemize}
+    \item $H_0$ : $A$ sends $m_0, m_1$ to $C$. Then $C$ choose $m_0$, and choose random $r \in \{0, 1\}^{n(\lambda)}$, 
+    then send $A$ back to $(r, m_0 \oplus \textsc{PRF}(k, r))$
+    \item $H_1$ : $C$ initialize $L = \emptyset$. $A$ sends $m_0, m_1$ to $C$. 
+    $C$ choose random $r \in \{0,1\}^{n(\lambda)}$ then search $(r, y)$ in $L$. If not exists, then 
+    generate pure random $y$ and $L \gets L::(r, y)$ and return $(r, m_0 \oplus y)$
+    \item $H_2$ : $C$ initialize $L = \emptyset$. $A$ sends $m_0, m_1$ to $C$. 
+    $C$ choose random $r \in \{0,1\}^{n(\lambda)}$ then search $(r, y)$ in $L$. If not exists, then 
+    generate pure random $y$ and $L \gets L::(r, y)$ and return $(r, m_1 \oplus y)$
+    \item $H_3$ : $A$ sends $m_0, m_1$ to $C$. Then $C$ choose $m_1$, and choose random $r \in \{0, 1\}^{n(\lambda)}$, 
+    then send $A$ back to $(r, m_1 \oplus \textsc{PRF}(k, r))$
+\end{itemize}
+
+All of these are quite variance of \textsc{IND-CPA-EXP} game. Now, our remaining goal is that 
+if one of $H_i, H_{i+1}$ is distinguishable, then it contradicts to \textsc{PRF}-security of given \textsc{PRF}. 
+
+\begin{enumerate}
+    \item $(i = 0,2)$ Here, suppose that $A$ has power:
+    \[\bigg| \Pr[1 \gets H_0] - \Pr[1 \gets H_1] \bigg| \geq \frac{1}{3}\varepsilon(\lambda)\]$A$ can break the \textsc{PRF}-security of given PRF. 
+    Now $B$ join the $\textsc{PRF-EXP}_b(A, \lambda)$. Then, $A$ prepare $(m_0, m_1)$ and send it to $B$. 
+    $B$ generate random string $r \in \{0,1\}^{n(\lambda)}$ and send $B$'s challenger. If $b = 0$, it gives pseudo random $y$, or $b = 1$, it gives pure random $y$. 
+    Anyway, $B$ make $(r, y \oplus m_0)$ then give it back to $A$. Then $A$ will distinguish $y$ is pseudo random or pure random with probability $\varepsilon(\lambda)/3$. 
+    Then, $B$ takes the output of $A$ and submit it to its challenger. Then $B$ also distinguish pseudo random and pure random with probability $\varepsilon(\lambda)/3$, contradiction. 
+    Vice versa for $i = 2$.
+    \item $(i = 1)$ Here, suppose that $A$ has power: 
+    \[\bigg| \Pr[1 \gets H_1] - \Pr[1 \gets H_2] \bigg| \geq \frac{1}{3}\varepsilon(\lambda)\]
+    Here, note that $A$ can distinguish $m_0 \oplus y$ and $m_1 \oplus y$ with probability $\varepsilon(\lambda)/3$. 
+    However, $y$ is pure random string with $m(\lambda)$ length. Since $y$ is purely random, 
+    $m_0 \oplus y, m_1 \oplus y$ both are also purely random strings. So it is generally impossible to distinguish them. 
+    One possible case is that, $r$ is small so there can be collison in $y$. By the mechanism, 
+    we can possibily obtain $2^{n(\lambda)}$ amount of $y$ so the collision probability is $2^{-n(\lambda)}$. Since $2^{n(\lambda)}$ is super polynomial, 
+    this probability is negligible. $A$ can generate $q$ queries, collision probability is $q^2/2^{n(\lambda)}$ which is negligible. So $A$ can't distinguish $H_1, H_2$, this case is impossible. 
+\end{enumerate}
+
+\end{proof}
+
+\end{document}
