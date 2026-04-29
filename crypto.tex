@@ -23,6 +23,7 @@
 \usepackage{tikz-cd}
 \usepackage{comment}
 \usepackage{mathpartir}
+\usepackage{url}
 
 \linespread{1.3} 
 
@@ -303,6 +304,7 @@ pdfauthor={Hojune Lee},
 
 \section{Encryption}
 
+This is study note of Prof. Zhandry's lecture\cite{zhandry_crypto}. 
 There will be many notational things and remarks and pre-requested things. 
 Since this is just \lq summary note of summary note(or more depth)', many of things will be assumed. 
 For here, I'm familiar with basic undergraduated mathematics and computation theory(e.g., Turing machine) 
@@ -782,15 +784,38 @@ Then,
 \[\Pr[x \text{ is bad}] = \Pr[Y(x) \geq \frac{1}{4} - \frac{\gamma}{2}] \leq \frac{\BE[Y(x)]}{\frac{1}{4}-\frac{\gamma}{2}} = \frac{1 - 4\gamma}{1 - 2\gamma}\]
 So, 
 \[\Pr[x \text{ is good}] \geq 1 - \frac{1-4\gamma}{1-2\gamma} = \frac{2\gamma}{1 - 2\gamma}\geq 2\gamma\]
-Means that we can choose good $x$ via sampling with non-negligible probability. Now assume that $x$ is good. Let 
-\[H(r) = B(r, F(x))\]
-And for every $i \in [n]$, choose $r \in \{0,1\}^n$ randomly then compute 
+Means that we can choose good $x$ via sampling with non-negligible probability. Now suppose that given $x$ is good. 
+Then the goal of adversary $C$ is breaking OWF assumption of $F$. If the probability that given $x$ is good is non-negligible and 
+if $x$ is good then $C$ can compute $x$ from $F(x)$ with non-negligible probability, then we can say that $C$ has non-negligible advantage to break OWF assumption of $F$. 
+Now $B$ break OWF of $F$ with good $x$. Let's define 
+\[H(r) = B(r, F(x))\] 
+Choose enoughly many $r \xleftarrow{\$} \{0,1\}^n$ and $C$ computes 
 \[H(r) \oplus H(r \oplus e_i)\]
-If $B$ guess correctly boss of them, the value is 
-\[\langle x, r \rangle \oplus \langle x, r \oplus e_i \rangle = \langle x, e_i \rangle = x_i\]
+Then, if $B$ computes both of them correctly, 
+\[H(r) \oplus H(r \oplus e_i) = \langle x, r \rangle \oplus \langle x, r \oplus e_i \rangle = \langle x, e_i \rangle = x_i\]
+So, $C$ can obtain $x_i$ correctly when $B$ guess both of them correctly. So, 
+\begin{align*} 
+    \Pr[C \text{ correctly guess } x_i ~|~ x \text{ is good }] &= \Pr[H(r) \oplus H(r \oplus e_i) = x_i] \\
+    & = \Pr[B \text{ guess both correctly }] \\ 
+    & = 1 - \Pr[B \text{ wrong one of them }] \\
+    & \geq 1 - 2\left(\frac{1}{4} - \frac{\gamma}{2}\right) \\
+    & = \frac{1}{2} + \gamma
+\end{align*}
+
 So, 
-\[\Pr[H(r) \oplus H(r \oplus e_i) = x_i] \geq \left(\frac{3}{4} + \gamma\right)^2 \geq \frac{1}{2} + \gamma\]
-So, we have $\gamma$-advantage to compute $x_i$, so for good $x$, we have non-negligible advantage to compute $x$. 
+\begin{align*}
+    \Pr[F(C(F(x))) = F(x)~|~ x \xleftarrow{\$} \{0,1\}^n] & \geq \Pr[C \text{ correct}~|~ x \text{ is good}]\Pr[x \text{ is good}] \\
+    & \geq \frac{1}{2} + \CO(\gamma)
+\end{align*}
+$C$ has non-negligible advantage to break OWF assumption of $F$, which is contradiction. 
+
 \end{proof}
+
+\chapter{Statistical Distance and Entropy}
+
+In this chapter, I reference Alex Lombardi's note\cite{lombardi_crypto}
+
+\bibliographystyle{plain}
+\bibliography{reference} 
 
 \end{document}

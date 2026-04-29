@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{lombardi_crypto}
+Alex Lombardi.
+\newblock Lecture notes on cryptography.
+\newblock \url{https://drive.google.com/file/d/1I5aObjjX_0Zlpn97mNiALAsqbqVJDV7d/view}, 2023.
+
+\bibitem{zhandry_crypto}
+Mark Zhandry.
+\newblock Lecture notes on cos533.
+\newblock \url{https://mzhandry.github.io/courses/2021-Spring-COS533/}, 2021.
+
+\end{thebibliography}
